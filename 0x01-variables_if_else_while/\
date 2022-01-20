@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+/**
+ * main -entry point
+ *
+ * Return: Always 0 (success)
+ */
+
+int main(void)
+{
+	int ii = 48, jj = 49, kk = 50;
+	int cm = 44, spc = 32, cnt = 0;
+
+	while ((ii <= 55) && (jj <= 56) && (kk <= 57))
+	{
+		cnt++;
+		putchar(ii);
+		putchar(jj);
+		putchar(kk);
+
+		if (cnt < 120)
+		{
+			putchar(cm);
+			putchar(spc);
+		}
+		if (cnt == 120)
+			putchar(32);
+		kk++;
+
+		if (kk == 58)
+		{
+			jj++;
+			kk = jj + 1;
+		}
+
+		if (jj == 57)
+		{
+			ii++;
+			jj = ii + 1;
+			kk = jj + 1;
+		}
+	}
+	return (0);
+}

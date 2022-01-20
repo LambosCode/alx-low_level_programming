@@ -1,0 +1,220 @@
+#include "main.h"
+
+int main(int ac, char **av)
+{
+	int64_t no, *primed, stp = 1;
+	long int cnt, st, div = 1;
+
+	printf("\n----------------------------------------------\n");
+	printf("---Please do no that exceeding numbers over gigabyte values takes longer.\n\
+	--Example 233,444,444,444,444.\n This program can accept multiple values\n");
+	if (ac < 1)
+	{
+		printf("--You have made no inputs.\n");
+		return (-1);
+	}
+
+	while (stp < ac)
+	{
+		no = _atoi(av[stp]);
+		cnt = 0;
+		st = 0;
+		if (no <= 0)
+		{
+			printf("---Provide a valid no, greter than 0\n");
+	    		return (-1);	
+		}
+		else if (no == 1)
+			printf("1\n");
+		else if (no > 10000000000000)
+			printf("---You have over gigabyte value, this program might take longer.---\n");
+		primed = primes(no, &cnt);
+		while (st < cnt)
+		{
+			printf(" %ld ", primed[st]);
+			div += primed[st];
+
+			if (st < (cnt - 1))
+				printf("*");
+			st++;
+		}
+		printf("\n---Addition of divisor of %ld is ----%ld", no, div);
+		if (div == no)
+			printf("\n---%ld is a special.\n", div);
+		st = 0;
+		div = 1;
+		printf("\n\n---Validating any error --- Please wait...\n");
+		primed = reprimed(primed, &cnt);
+
+		while (st < cnt)
+		{
+			printf(" %ld ", primed[st]);
+			div += primed[st];
+
+			if (st < (cnt - 1))
+				printf("*");
+			st++;
+		}
+		stp++;
+		printf("\n---Addition of divisor of %ld is ----%ld", no, div);
+		if (div == no)
+			printf("\n---%ld is a special.\n", div);
+		printf("\n----------------------------------------------%ld-param\n", (stp - 1));
+		if (stp > 1 && stp != ac)
+			printf("\n----------------------------------------------\n");
+		free(primed);
+		primed = 0;
+	}
+	printf("\n----------------------------------------------\n\n");
+	return (0);
+}
+
+int64_t *primes(int64_t no, long int *cnt)
+{
+	int64_t *str, leap = 0, run = 0;
+     	int64_t n = 2, sbt = 1, jmp = 0;
+	int64_t dpl = no;
+
+	*cnt = 0;
+	str = malloc(sizeof(*str) * 1);
+	if (!str)
+		return (0);
+
+	while (!(no < n))
+	{
+		if (no % n == 0)
+		{
+			if (*cnt >= 1)
+				str = remallocd(str, *cnt);
+			str[*cnt] = n;
+			no = no / n;
+			sbt *= n;
+			*cnt = *cnt + 1;
+		}
+		else if (no % (n + 1) == 0)
+		{
+			n++;
+			if (*cnt >= 1)
+				str = remallocd(str, *cnt);
+			str[*cnt] = n;
+			sbt *= n;
+			no = no / n;
+			*cnt = *cnt + 1;
+		}
+		else if (no % n >= 2)
+		{
+			leap++;
+			n += ((no % (no - n)) + 1);
+		}
+		else if (no % (n + 1) >= 1)
+		{
+			leap++;
+			n += (no % (n + 1));
+		}
+		run++;
+	}
+	sbt += 0;
+	printf("\n---This program went on a 1st run of -%ld- cycles!\n", run);
+	printf("Leap Jumps: ---%ld---cycle jump &\nAnd divisor multiplication = %ld\n", leap, sbt);
+	printf("\n*********************************\n");
+	printf("---Prime numbers of %ld:\n", dpl);
+	return (str);
+}
+int64_t *reprimed(int64_t *str, long int *cnt)
+{
+	int64_t rnt = *cnt, run = 0;
+     	int64_t n = 2, no;
+	
+	if (!str || !cnt)
+		return (0);
+
+	*cnt = *cnt - 1;
+	no = str[*cnt];
+
+	while (!(no < n))
+	{
+		if (no % n == 0)
+		{
+			if (*cnt >= 1)
+				str = remallocd(str, *cnt);
+			str[*cnt] = n;
+			no = no / n;
+			*cnt = *cnt + 1;
+		}
+		else if (no % (n + 1) == 0)
+		{
+			n++;
+			if (*cnt >= 1)
+				str = remallocd(str, *cnt);
+			str[*cnt] = n;
+			no = no / n;
+			*cnt = *cnt + 1;
+		}
+		else
+			n += 2;
+		run++;
+	}
+
+	printf("\nThis program went on 2nd run of -%ld- cycles! - With no leaps.\n", run);
+	printf("\n*********************************\n");
+	printf("***Primes are:\n");
+	return (str);
+}
+int64_t *remallocd(int64_t *str, int64_t cnt)
+{
+	int64_t *more, kp = (int64_t)cnt;
+
+	cnt++;
+	more = malloc(sizeof(*more) * cnt);
+
+	cnt = kp;
+	kp = 0;
+
+	while (kp < cnt)
+	{
+		more[kp] = str[kp];
+		kp++;
+	}
+	more[kp] = 0;
+
+	free(str);
+	return (more);
+}
+
+int64_t _atoi(char *s)
+{
+	int64_t x = 1, unit = 10;
+
+	while (s)
+	{
+		if (*s == 0)
+			return (0);
+
+		if (*s == 45)
+		{
+			x *= -1;
+			s++;
+		}
+
+		if (*s >= 48 && *s <= 57)
+		{
+			x *= (*s - 48);
+again:
+			if (s[1] >= 48 && s[1] <= 57)
+			{
+				s++;
+				x *= unit;
+				if (x > 0)
+					x += (*s - 48);
+				else
+					x += ((*s - 48) * -1);
+				goto again;
+			}
+			else
+				return (x);
+		}
+		if (*s != 45)
+			s++;
+	}
+	return (0);
+}
