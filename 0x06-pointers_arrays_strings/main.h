@@ -21,4 +21,12 @@ char *cap_string(char *);
 
 char *rot13(char *);
 
+void print_number(int n);
+
+int _int_sqr(int x, int y);
+
+int _int_len(int i);
+
+int _putchar(char c);
+
 #endif /* MAIN_H */
