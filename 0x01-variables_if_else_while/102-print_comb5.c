@@ -1,4 +1,4 @@
-#include <stdio.h>:
+#include <stdio.h>
 
 /**
  * main -entry point
@@ -8,10 +8,13 @@
 
 int main(void)
 {
-	int ii = 48, jj = 48, kk = 48, ll = 49, cm = 44, spc = 32, m_c = 0;
+	int ii = 48, jj = ii, kk = jj, ll = kk, cm = 44, spc = 32, spc1 = spc;
 
 	while (ii < 58)
 	{
+		if (ii == kk && jj == ll)
+			goto again;
+
 		putchar(ii);
 		putchar(jj);
 		putchar(spc);
@@ -19,30 +22,36 @@ int main(void)
 		putchar(ll);
 		putchar(cm);
 		putchar(spc1);
+again:
+		if (kk == 57 && ll == 57)
+		{
+			jj++;
+			kk = ii;
+			ll = jj;
+		}
 		ll++;
-		m_c++;
-
+		
 		if (ll == 58)
 		{
 			kk++;
 			ll = 48;
 		}
-		if (kk == 58)
+		else if (kk == 58)
 		{
 			jj++;
-			ll = 48 + 2;
 			kk = 48;
+			ll = 48;
 		}
-		if (jj == 58)
+		else if (jj == 58)
 		{
 			ii++;
 			ll = 48;
 			kk = 48;
 			jj = 48;
 		}
-		if (m_c == 9721)
+		if (ii == 57 && jj == 57)
 			break;
-		if (m_c == 9720)
+		if (ii == 57 && jj == 56)
 		{
 			cm  = 10;
 			spc1 = 0;
