@@ -34,7 +34,13 @@ again:
 	putchar(10);
 	return (0);
 }
-
+/**
+ * checkings - format the correct output address
+ * @ii: first digit
+ * @jj: second digit
+ * @kk: third digit
+ * @ll: fourht digit
+ */
 void checkings(int *ii, int *jj, int *kk, int *ll)
 {
 		if (*kk == 57 && *ll == 57)
