@@ -25,12 +25,22 @@ int main(void)
 again:
 		if (kk == 57 && ll == 57)
 		{
-			jj++;
-			kk = ii;
-			ll = jj;
+			if (jj == 57)
+			{
+				ii++;
+				jj = 48;
+				kk = ii;
+				ll = jj;
+			}
+			else
+			{
+				jj++;
+				kk = ii;
+				ll = jj;
+			}
 		}
+
 		ll++;
-		
 		if (ll == 58)
 		{
 			kk++;
