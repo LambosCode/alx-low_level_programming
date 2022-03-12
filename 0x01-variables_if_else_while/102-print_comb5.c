@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+void checkings(int *ii, int *jj, int *kk, int *ll);
 /**
  * main -entry point
  *
@@ -27,45 +27,50 @@ int main(void)
 			cnt++;
 		}
 again:
-		if (kk == 57 && ll == 57)
-		{
-			if (jj == 57)
-			{
-				ii++;
-				jj = 48;
-				kk = ii;
-				ll = jj;
-			}
-			else
-			{
-				jj++;
-				kk = ii;
-				ll = jj;
-			}
-		}
-
-		ll++;
-		if (ll == 58)
-		{
-			kk++;
-			ll = 48;
-		}
-		else if (kk == 58)
-		{
-			jj++;
-			kk = 48;
-			ll = 48;
-		}
-		else if (jj == 58)
-		{
-			ii++;
-			ll = 48;
-			kk = 48;
-			jj = 48;
-		}
+		checkings(&ii, &jj, &kk, &ll);
 		if (ii == 57 && jj == 57)
 			break;
 	}
 	putchar(10);
 	return (0);
+}
+
+void checkings(int *ii, int *jj, int *kk, int *ll)
+{
+		if (*kk == 57 && *ll == 57)
+		{
+			if (*jj == 57)
+			{
+				*ii = *ii + 1;
+				*jj = 48;
+				*kk = *ii;
+				*ll = *jj;
+			}
+			else
+			{
+				*jj = *jj + 1;
+				*kk = *ii;
+				*ll = *jj;
+			}
+		}
+
+		*ll = *ll + 1;
+		if (*ll == 58)
+		{
+			*kk = *kk + 1;
+			*ll = 48;
+		}
+		else if (*kk == 58)
+		{
+			*jj = *jj + 1;
+			*kk = 48;
+			*ll = 48;
+		}
+		else if (*jj == 58)
+		{
+			*ii = *ll + 1;
+			*ll = 48;
+			*kk = 48;
+			*jj = 48;
+		}
 }
