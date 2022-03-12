@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	int ii = 48, jj = ii, kk = jj, ll = kk, cm = 44, spc = 32, spc1 = spc;
+	int ii = 48, jj = ii, kk = jj, ll = kk, cm = 44, spc = 32, cnt = 0;
 
 	while (ii < 58)
 	{
@@ -20,8 +20,12 @@ int main(void)
 		putchar(spc);
 		putchar(kk);
 		putchar(ll);
-		putchar(cm);
-		putchar(spc1);
+		if (cnt < 4949)
+		{
+			putchar(cm);
+			putchar(spc);
+			cnt++;
+		}
 again:
 		if (kk == 57 && ll == 57)
 		{
@@ -61,11 +65,7 @@ again:
 		}
 		if (ii == 57 && jj == 57)
 			break;
-		if (ii == 57 && jj == 56)
-		{
-			cm  = 10;
-			spc1 = 0;
-		}
 	}
+	putchar(10);
 	return (0);
 }
