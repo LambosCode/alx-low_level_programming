@@ -1,6 +1,12 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * main - entry program
+ *
+ * Return: 0 on success
+ */
+
 int main(void)
 {
 	long int i = 0, rslt = 1, x, cnt = 0;
