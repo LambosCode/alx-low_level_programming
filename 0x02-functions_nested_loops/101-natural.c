@@ -12,7 +12,7 @@ int main(void)
 	int x = 1024, i = 1, rslt = 0;
 
 	for (; i < x; i++)
-		if (i % 3 == 0|| i % 5 == 0)
+		if (i % 3 == 0 || i % 5 == 0)
 			rslt += i;
 	printf("%d\n", rslt);
 
