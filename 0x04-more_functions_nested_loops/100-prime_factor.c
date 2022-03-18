@@ -9,8 +9,8 @@
 
 int main(void)
 {
-	int64_t no, *primed;
-	long int cnt = 0, st = 0;
+	long no, *primed;
+	long cnt = 0, st = 0;
 
 	no = 612852475143;
 
@@ -35,10 +35,10 @@ int main(void)
  * Return: a pointer of length of primes in a number
  */
 
-int64_t *primes(int64_t no, long int *cnt)
+long *primes(long no, long *cnt)
 {
-	int64_t *str;
-	int64_t n = 2;
+	long *str;
+	long n = 2;
 
 	*cnt = 0;
 	str = malloc(sizeof(*str) * 1);
@@ -79,9 +79,9 @@ int64_t *primes(int64_t no, long int *cnt)
  * Return: interger values stored.
  */
 
-int64_t *remallocd(int64_t *str, int64_t cnt)
+long *remallocd(long *str, long cnt)
 {
-	int64_t *more, kp = (int64_t)cnt;
+	long *more, kp = (long)cnt;
 
 	cnt++;
 	more = malloc(sizeof(*more) * cnt);

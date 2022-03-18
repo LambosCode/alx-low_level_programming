@@ -16,9 +16,13 @@ void print_number(int n);
 
 uint64_t *reprimed(uint64_t *str, int *cnt);
 
-uint64_t *primes(uint64_t no, int *cnt);
+long *primes(long no, long *cnt);
+
+/*uint64_t *primes(uint64_t no, int *cnt);*/
 
 void patch_print(int *cnt, int x, int64_t n, int64_t *i_sqrd, int *len);
+
+long *remallocd(long *str, long cnt);
 
 int _int_len(int i);
 
@@ -26,7 +30,7 @@ int64_t _int_sqr(int64_t x, int y);
 
 uint64_t _atoi(char *s);
 
-uint64_t *remallocd(uint64_t *str, int cnt);
+/*uint64_t *remallocd(uint64_t *str, int cnt);*/
 
 int _putchar(char c);
 
