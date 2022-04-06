@@ -18,7 +18,7 @@ char *str_concat(char *s1, char *s2)
 	else if (cnt < _strlen(s2))
 		return (s1);
 	if (!s1 && !s2)
-		return (0);
+		return ("");
 	else if (!str)
 		return (0);
 
