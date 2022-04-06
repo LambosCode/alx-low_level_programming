@@ -24,6 +24,7 @@ int **alloc_grid(int width, int height)
 
 		if (!arr_ptr[height])
 		{
+			height--;
 			while (height > -1)
 			{
 				free(arr_ptr[height]);
