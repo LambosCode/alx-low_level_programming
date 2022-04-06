@@ -11,7 +11,7 @@ char *_strdup(char *str)
 	char *sstr;
 	int i = 0;
 
-	sstr = malloc(sizeof(char) * _strlen(str) + 1);	
+	sstr = malloc(sizeof(char) * _strlen(str) + 1);
 
 	if (!str || !sstr)
 		return (0);

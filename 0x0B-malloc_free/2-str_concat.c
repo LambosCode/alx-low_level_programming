@@ -13,8 +13,12 @@ char *str_concat(char *s1, char *s2)
 	int i = 0;
 	char *str = malloc(cnt + 1);
 
-	if (!s1 || !s2 || !str)
+	if (!s1 && !s2 && !str)
 		return (0);
+	else if (s1 = 0)
+		return (s2);
+	else if (s2 = 0)
+		return (s1);
 
 	for (; i < cnt; i++)
 	{
